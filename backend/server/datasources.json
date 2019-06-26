@@ -1,0 +1,6 @@
+{
+  "db": {
+    "url": "mongodb://{username}:{password}@ds157654.mlab.com:57654/gw2news",
+    "connector": "mongodb"
+  }
+}
