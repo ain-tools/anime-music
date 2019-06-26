@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Anime music - Get all your OSTs here!</title>
+  <meta name="description" content="The #1 source of anime music, all for FREE! Explore and save your favorite tracks.">
+  <meta name="keywords" content="Anime music,Anime OSTs,Anime openings,animemusicplanet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>/* 
+YouTube Audio Embed 
+--------------------
+ 
+Author: Amit Agarwal
+Web: http://www.labnol.org/?p=26740 
+*/
+
+  //function onYouTubeIframeAPIReady() { var e = document.getElementById("youtube-audio"), t = document.createElement("img"); t.setAttribute("id", "youtube-icon"), t.style.cssText = "cursor:pointer;cursor:hand", e.appendChild(t); var a = document.createElement("div"); a.setAttribute("id", "youtube-player"), e.appendChild(a); var o = function (e) { var a = e ? "IDzX9gL.png" : "quyUPXN.png"; t.setAttribute("src", "https://i.imgur.com/" + a) }; e.onclick = function () { r.getPlayerState() === YT.PlayerState.PLAYING || r.getPlayerState() === YT.PlayerState.BUFFERING ? (r.pauseVideo(), o(!1)) : (r.playVideo(), o(!0)) }; var r = new YT.Player("youtube-player", { height: "0", width: "0", videoId: e.dataset.video, playerVars: { autoplay: e.dataset.autoplay, loop: e.dataset.loop, playsinline: true }, events: { onReady: function (e) { r.setPlaybackQuality("small"), o(r.getPlayerState() !== YT.PlayerState.CUED) }, onStateChange: function (e) { e.data === YT.PlayerState.ENDED && o(!1) } } }) }
+  </script>
+</head>
+
+<body style="background-color:#151412;">
+  <div style="width:0px !important; height:0px !important;" id="player">
+
+  </div>
+  <app-root></app-root>
+</body>
+
+</html>

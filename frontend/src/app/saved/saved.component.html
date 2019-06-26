@@ -1,0 +1,57 @@
+<div *ngIf="screenLoader" style="width:100%;min-height:100vh;position: fixed;z-index:99999;">
+    <div style="width: 220px;height:220px;margin: auto;z-index:2;opacity:1;position: absolute;left: 50%;margin-left: -120px;top: 50%;margin-top: -120px;"
+        class="loader"></div>
+
+    <div style="position: absolute;width:100%;min-height:100vh;background-color:black;z-index:1;opacity:0.5;">
+    </div>
+</div>
+<div style="z-index: 100;position:fixed;left:0px;top:0px;width:100%;height:100px;background-color:#2a2824;border-radius: 5px;">
+    <img id="currentAnimePlayingIMG" style="margin-top:19px;margin-left:40px;width:50px;height:55px;border-radius: 5px;">
+    <h4 class="w3-hide-medium w3-hide-small" style="position:fixed;left:100px;top:10px;color:white;width:13%;overflow: hidden;height:30px;">{{title}}</h4>
+    <h5 class="w3-hide-medium w3-hide-small" style="position:fixed;left:100px;top:30px;color:gray;width:13%;overflow: hidden;height:30px;">{{currentPlayingSong}}</h5>
+
+    <i (click)="randomSongFromAlbum()" class='fas fa-dice w3-hide-medium w3-hide-small w3-hover-opacity' style='font-size:24px;position:fixed;left:20%;top:35px;color:gray;cursor: pointer;'></i>
+    <i (click)="randomSongFromAlbum()" class='fas fa-dice w3-hide-large w3-hover-opacity' style='font-size:24px;float:right;margin-top:35px;margin-right: 15px;color:gray;cursor: pointer;'></i>
+    <i (click)="decrementAlbumSong()" class="fas fa-angle-double-left w3-hover-opacity" style='font-size:24px;position:fixed;left:35%;top:35px;color:white;cursor: pointer;'></i>
+    <i *ngIf="!isSongPlaying" class='fas fa-play w3-hover-opacity' (click)="stimulateClick(currentPlayingSong,title)"
+        style='font-size:24px;position:fixed;left:50%;top:35px;color:white;cursor: pointer;'></i>
+    <i *ngIf="isSongPlaying" class='fas fa-pause w3-hover-opacity' (click)="stimulateClick(currentPlayingSong,title)"
+        style='font-size:24px;position:fixed;left:50%;top:35px;color:white;cursor: pointer;'></i>
+    <i (click)="incrementAlbumSong()" class="fas fa-angle-double-right w3-hover-opacity" style='font-size:24px;position:fixed;left:65%;top:35px;color:white;cursor: pointer;'></i>
+
+    <div style="height:15%;margin-top: 9.5px;" class="w3-border">
+        <small style="position:absolute;color:white;">
+            <div *ngIf="!formattedVideoTime">0:00 / 0:00</div>
+            <div *ngIf="formattedVideoTime">{{formattedVideoTime}} / {{totalVideoTime}}</div>
+        </small>
+        <div id="slidePercentage" class="w3-grey" style="height:100%;width:0%;"></div>
+    </div>
+</div>
+<div style="margin-top:120px;width:90%;margin-left:auto;margin-right:auto;height:100px;background-color:#2a2824;border-radius: 5px;">
+    <h2 [routerLink]="['/']" class="w3-hover-opacity" style="display: inline-block;color:gray;width: 32%;text-align: center;padding-top: 1%;cursor: pointer;"><i
+            class="far fa-compass"></i> Explore</h2>
+    <h2 [routerLink]="['/search']" class="w3-hover-opacity" style="display: inline-block;color:gray;width: 32%;text-align: center;padding-top: 1%;cursor: pointer;"><i
+            class="fas fa-search"></i> Search</h2>
+    <h2 [routerLink]="['/saved']" class="w3-hover-opacity" style="display: inline-block;color:white;width: 32%;text-align: center;padding-top: 1%;cursor: pointer;"><i
+            class="far fa-heart"></i> Favorites</h2>
+</div>
+<div *ngIf="generateAlbum" style="overflow-y: scroll;margin-top:10px;width:90%;margin-left:auto;margin-right:auto;height:120px;background-color:#2a2824;border-radius: 5px;">
+    <div *ngFor="let song of albumList">
+        <i (click)="saveAlbum()" *ngIf="!noSongsFound" class='far fa-heart w3-hover-red w3-hover-opacity' style='border-radius: 100%;font-size:24px;float:left;color:white;cursor: pointer;opacity: 1;-webkit-text-stroke: 1px black;margin-left:5px;margin-right:5px;'></i><i
+            *ngIf="!noSongsFound" class='fas fa-play w3-hover-opacity {{song}}' (click)="stimulateClick(song,title)"
+            style='font-size:24px;float:left;color:white;cursor: pointer;opacity: 1;margin-right:5px;-webkit-text-stroke: 2px black;'></i>
+        <h4 style="color:white">{{song}}</h4>
+        <hr>
+    </div>
+</div>
+<div style="margin-top:20px;width:85%;margin-left:auto;margin-right:auto;height:700px;border-radius: 5px;z-index:-2;">
+    <h4 style="color:white"><b>your music</b></h4>
+    <div *ngFor="let singleFavoriteAnime of favoritesList" (click)="getAlbumList(singleFavoriteAnime.counter)"
+        [ngStyle]="{'background-image': 'url('+singleFavoriteAnime.imgURL+')'}" style="border-radius:10px;width:140px;height:140px;margin:5px;background-color:white;position: relative;display: inline-block;cursor: pointer !important;-webkit-text-stroke: 1px black;"><i
+            class='fas fa-play w3-hover-opacity {{singleFavoriteAnime.counter}}' style='font-size:24px;float:left;color:white;opacity: 1;margin-left: 60px;margin-top:60px;-webkit-text-stroke: 2px black;'></i>
+        <h6 style="color:rgb(255, 255, 255);position: absolute;margin-top: 100px;height:20px;overflow: hidden;-webkit-text-stroke: 1px black;"><b>{{singleFavoriteAnime.title}}</b></h6>
+        <div style="margin-top:102.5px;background-color:black;height:20px;width:100%;">
+
+        </div>
+    </div>
+</div>

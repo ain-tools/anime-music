@@ -1,0 +1,44 @@
+/* Style the search field */
+div.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+  
+  /* Style the submit button */
+  div.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2a2824;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  div.example button:hover {
+    background: rgb(194, 194, 194);
+  }
+  
+  /* Clear floats */
+  div.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #2a2824; /* Blue */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
